@@ -191,3 +191,65 @@ u.l{text-decoration:underline}
 .js .pre{opacity:0;translate:0 26px}
 .js .pre.in{opacity:1;translate:0 0;transition:opacity .7s ease,translate .7s ease}
 @media (prefers-reduced-motion:reduce){.js .pre{opacity:1;translate:none}}
+
+/* ===== v3: telefoonvriendelijker ===== */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+a,button{-webkit-tap-highlight-color:transparent}
+html.menu-open{overflow:hidden}
+/* hover-effecten alleen op apparaten met een muis, zodat ze op touch niet "blijven hangen" */
+@media (hover:none){
+.btn:hover,.offer-card:hover,.price-card.featured:hover{transform:none}
+.offer-card:hover{box-shadow:none}
+.photo-frame:hover img,.photo-card:hover .photo-frame img{transform:none}
+.btn:active{transform:scale(.97)}
+}
+/* grotere tikvlakken voor de slider-bolletjes */
+.dot{position:relative}
+.dot::after{content:'';position:absolute;inset:-14px -8px}
+.whatsapp-float{right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom))}
+
+@media (max-width:860px){
+/* menu klapt uit onder de header, i.p.v. over het logo heen */
+.nav-links{position:fixed;inset:var(--menu-top,70px) 0 0 0;max-height:none;transform:none;opacity:0;visibility:hidden;transition:opacity .2s ease,visibility 0s linear .2s;padding-bottom:max(30px,env(safe-area-inset-bottom));overscroll-behavior:contain}
+.nav-links.open{opacity:1;visibility:visible;transition:opacity .2s ease}
+.nav.wrap{padding-top:10px;padding-bottom:10px}
+.logo{font-size:30px}
+/* compacte topbar: alleen telefoon + mail, met grotere tikvlakken */
+.topbar .wrap{padding-top:0;padding-bottom:0;justify-content:center}
+.topbar .wrap>div:not(.topbar-links){display:none}
+.topbar-links{gap:4px 18px;justify-content:center}
+.topbar-links a{display:inline-block;padding:10px 2px}
+}
+
+@media (max-width:600px){
+.wrap{padding:0 18px}
+.section{padding:60px 0}.section.tight{padding:40px 0}
+.section-head{margin-bottom:30px}
+.hero .wrap{padding-top:28px;padding-bottom:44px;gap:30px}
+.hero p.lead{font-size:16.5px;margin-top:18px}
+.hero-stats{gap:18px 24px;margin-top:30px}
+.hero-badge{width:88px;height:88px;font-size:13px;top:-12px;right:-6px}
+.page-hero{padding:36px 0 40px}
+/* knoppen over de volle breedte: makkelijker te raken met je duim */
+.hero-actions{flex-direction:column;align-items:stretch;gap:10px}
+.hero-actions .btn{justify-content:center;padding:16px 22px}
+.cta-band{padding:32px 20px;border-radius:var(--radius-md)}
+.cta-band .hero-actions{width:100%}
+.callout{padding:40px 20px;border-radius:var(--radius-md)}
+.offer-card,.price-card,.info-card,.job-card{padding:24px 20px}
+.faq-q{padding:18px 18px;font-size:15.5px;min-height:56px}
+.faq-a-inner{padding:0 18px 20px}
+.info-card .row{flex-direction:column;gap:2px}
+.info-card .row strong{min-width:0}
+.offer-grid.photos{gap:40px}
+.big{font-size:clamp(56px,17vw,80px)}
+/* dagschema als verticale tijdlijn i.p.v. zijwaarts scrollen */
+.schedule{overflow:visible;padding:6px}
+.schedule-row{flex-direction:column;min-width:0}
+.schedule-item{display:flex;align-items:baseline;gap:16px;text-align:left;padding:14px 16px;border-right:none;border-bottom:1px dashed rgba(0,0,0,.15)}
+.schedule-item:last-child{border-bottom:none}
+.schedule-time{margin-bottom:0;min-width:48px}
+.footer-bottom{flex-direction:column}
+.site-footer{padding-bottom:calc(26px + 72px)} /* ruimte voor de WhatsApp-knop */
+.strip{margin-right:-18px;padding-right:18px}
+}
